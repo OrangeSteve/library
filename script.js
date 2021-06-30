@@ -6,7 +6,7 @@ bookCardHolder.classList.add(`card-holder`);
 document.body.appendChild(bookCardHolder);
 
 for (let i=0;i<150;i++){
-const newBook=new Book(`Book ${i}`,`Mr A.${i}`,`${i*i}`,Math.round(Math.random()));
+const newBook=new Book(`Book ${i}`,`Mr A.${i}`,`${Math.round(100+(Math.random()*950))}`,Math.round(Math.random()));
 addBookToLibrary(newBook);
 }
 showBooks();
