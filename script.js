@@ -1,15 +1,52 @@
 
 let myLibrary = [];
 let bookCards = [];
+
+const mainContent = document.querySelector(`main`);
+
+const addBookForm = document.querySelector(`#add-book-form`);
+addBookForm.remove();
+
 const bookCardHolder = document.createElement(`div`);
 bookCardHolder.classList.add(`card-holder`);
-document.querySelector(`main`).appendChild(bookCardHolder);
+mainContent.appendChild(bookCardHolder);
 
-for (let i=0;i<150;i++){
-const newBook=new Book(`Book ${i}`,`Mr A.${i}`,`${Math.round(100+(Math.random()*950))}`,Math.round(Math.random()));
-addBookToLibrary(newBook);
+const addBookMenuButton = document.querySelector(`#add-book-button`);
+addBookMenuButton.addEventListener(`click`, openAddBookMenu);
+
+
+for (let i = 0; i < 150; i++) {
+    const newBook = new Book(`Book ${i}`, `Mr A.${i}`, `${Math.round(100 + (Math.random() * 950))}`, Math.round(Math.random()));
+    addBookToLibrary(newBook);
 }
-showBooks();
+
+refreshBooks();
+
+
+
+function openAddBookMenu() {
+    bookCardHolder.remove();
+    addBookMenuButton.removeEventListener(`click`, openAddBookMenu);
+    addBookMenuButton.textContent = `Cancel`;
+    addBookMenuButton.addEventListener(`click`, closeAddBookMenu);
+    mainContent.appendChild(addBookForm);
+}
+
+function closeAddBookMenu() {
+    addBookForm.remove();
+    addBookMenuButton.removeEventListener(`click`, closeAddBookMenu);
+    addBookMenuButton.textContent = `Add Book`;
+    addBookMenuButton.addEventListener(`click`, openAddBookMenu);
+    mainContent.appendChild(bookCardHolder);
+    refreshBooks();
+}
+
+
+
+function refreshBooks() {
+    hideBooks();
+    showBooks();
+}
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -41,16 +78,19 @@ function addBookToLibrary(book) {
     myLibrary.push(book);
 }
 
+function hideBooks() {
 
+    let numCardsToRemove = bookCards.length - 1;
+
+    for (let i = numCardsToRemove; i >= 0; i--) {
+        bookCards[i].card.remove();
+    }
+
+    bookCards = [];
+}
 
 function showBooks() {
-    if (bookCards.length > 0) {
-        bookCards.forEach(card => {
-            card.remove();
-        });
 
-    }
-    bookCards = []
     if (myLibrary.length > 0)
         for (let i = 0; i < myLibrary.length; i++) {
             bookCards[i] = new BookCard(document.createElement(`div`),
@@ -63,15 +103,17 @@ function showBooks() {
             bookCards[i].author.textContent = `by ${myLibrary[i].author}`;
             bookCards[i].pages.textContent = `${myLibrary[i].pages} pages`;
             bookCards[i].card.classList.add(`book-card`);
-          if (myLibrary[i].read==true){ 
-                bookCards[i].read.textContent = "Read"; 
-                bookCards[i].card.classList.add(`read`); 
-            } else { 
-                bookCards[i].read.textContent = "Not read"; 
-            bookCards[i].card.classList.add(`not-read`); 
-        }
+            if (myLibrary[i].read == true) {
+                bookCards[i].read.textContent = "Read";
+                bookCards[i].card.classList.add(`read`);
+            } else {
+                bookCards[i].read.textContent = "Not read";
+                bookCards[i].card.classList.add(`not-read`);
+            }
 
 
             bookCardHolder.appendChild(bookCards[i].card);
         }
 }
+
+
