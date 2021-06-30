@@ -1,14 +1,47 @@
 <style>
-body{background-color: #FF0DF7;}
+    body {
+        background-color: rgb(6, 126, 206);
+    }
+
+    main{
+        grid-area:main;
+        background-color: rgb(149, 251, 255);
+padding: 20px;
+border: 5px outset navy;
+border-radius: 10px;
+overflow-y: scroll;
+    }
+
+header{
+
+    grid-area:header;
+}
+
+#add-book-button{
+    grid-area: addBook;
+}
+
+#grid-container{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 50px 1fr 100px 1fr 50px;
+    grid-template-rows: 100px 1fr;
+grid-template-areas: 
+". header . addBook ."
+" . main main main .";
+
+
+}
+
 
     .card-holder {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(125px, .5fr));
-        grid-auto-rows: minmax(175px, .7fr);
+        grid-template-columns: repeat(5, minmax(125px, .5fr));
+        grid-auto-rows: repeat(3,minmax(175px, .7fr));
         gap: 10px;
         color: white;
         justify-content: space-between;
-
     }
 
 
@@ -16,20 +49,19 @@ body{background-color: #FF0DF7;}
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        border: 4px outset;
-        border-radius: 5px;
+        border: 10px groove;
+        border-radius: 10px;
+        background-color: black;
+
     }
 
 
     .not-read {
-
-        background-color: red;
         border-color: red;
     }
 
     .read {
-        background-color: green;
-        border-color: green;
+        border-color: rgb(0, 255, 0);
     }
 </style>
 
@@ -44,13 +76,15 @@ body{background-color: #FF0DF7;}
 </head>
 
 <body>
-    <header><h1>Library</h1></header>
-    <main></main>
-    <footer><button class="btn add-book">
-Add book
+    <div id="grid-container">
+    <header>
+        <h1>Library</h1>
+    </header>
+    <button id="add-book-button">
+        Add book
     </button>
-    
-    </footer>
+    <main></main>    
+    </div>
     <script src="script.js"></script>
 </body>
 
