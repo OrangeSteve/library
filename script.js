@@ -3,7 +3,7 @@ let myLibrary = [];
 let bookCards = [];
 const bookCardHolder = document.createElement(`div`);
 bookCardHolder.classList.add(`card-holder`);
-document.body.appendChild(bookCardHolder);
+document.querySelector(`main`).appendChild(bookCardHolder);
 
 for (let i=0;i<150;i++){
 const newBook=new Book(`Book ${i}`,`Mr A.${i}`,`${Math.round(100+(Math.random()*950))}`,Math.round(Math.random()));
