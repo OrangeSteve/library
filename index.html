@@ -1,8 +1,6 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
 
-
-
     body {
         background-color: royalblue;
         font-family: 'Roboto Condensed', sans-serif;
@@ -14,8 +12,8 @@
         padding: 20px;
         border: 5px outset navy;
         border-radius: 10px;
-        overflow-y: scroll;}
-
+        overflow-y: scroll;
+    }
 
     header {
         grid-area: header;
@@ -23,16 +21,13 @@
         align-items: flex-end;
         justify-content: flex-start;
         font-size: 30px;
-        color:skyblue ;
+        color: skyblue;
     }
 
     #add-book-button {
-
         display: flex;
         justify-content: center;
         align-items: flex-end;
-        
-
         grid-area: addBook;
         margin-top: 20px;
         margin-bottom: 10px;
@@ -42,11 +37,7 @@
         width: 200px;
         font-family: 'Roboto Condensed', sans-serif;
         font-size: 40px;
-
     }
-   
-
-
 
     #grid-container {
         height: 95vh;
@@ -59,7 +50,6 @@
             " . main main main .";
     }
 
-
     .card-holder {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(125px, .5fr));
@@ -68,7 +58,6 @@
         color: white;
         justify-content: space-between;
     }
-
 
     .book-card {
         display: flex;
@@ -80,7 +69,6 @@
 
     }
 
-
     .not-read {
         border-color: red;
     }
@@ -90,23 +78,24 @@
     }
 
     @supports (-webkit-text-stroke: 1px black) {
-  h1 {
-    -webkit-text-stroke: 1px navy;
-    -webkit-text-fill-color: skyblue;
-  }
-    #add-book-button:hover{
-        -webkit-text-stroke: 1px navy;
-    -webkit-text-fill-color: skyblue;
-        font-size: 40px;
-    }
-    #add-book-button:active{
-        -webkit-text-stroke: 1px navy;
-    -webkit-text-fill-color: skyblue;
-        font-size: 30px;
-    }
-  
-}
+        h1 {
+            -webkit-text-stroke: 1px navy;
+            -webkit-text-fill-color: skyblue;
+        }
 
+        #add-book-button:hover {
+            -webkit-text-stroke: 1px navy;
+            -webkit-text-fill-color: skyblue;
+            font-size: 40px;
+        }
+
+        #add-book-button:active {
+            -webkit-text-stroke: 1px navy;
+            -webkit-text-fill-color: skyblue;
+            font-size: 30px;
+        }
+
+    }
 </style>
 
 <!DOCTYPE html>
@@ -127,7 +116,39 @@
         <button id="add-book-button">
             Add book
         </button>
-        <main></main>
+        <main>
+            <form style="display:flex;flex-direction:column;align-items:center;background-color:skyblue;position: sticky; top:0;border:3px outset navy;padding: 20px;">
+                <div>
+                    <h2 style="text-align: center;">Add book to library</h2>
+                    <label for="book-title">Title:</label><br>
+                    <input type="text" id="book-title" name="book-title" value="" placeholder="Book Title"><br>
+                    <br>
+                </div>
+                <div>
+                    <label for="book-author">Author:</label><br>
+                    <input type="text" id="book-author" name="book-author" value="" placeholder="Book Author"><br>
+                    <br>
+                </div>
+                <div>
+                    <label for="book-pages">Number of pages:</label><br>
+                    <input type="text" id="book-pages" name="book-pages" value="" placeholder="Number of Pages"><br>
+                    <br>
+                </div>
+                <div>
+                    <input type="radio" id="book-read" name="book-read-status" value="0" ;>
+                    <label for="book-read">Read</label><br>
+                    <input type="radio" id="book-reading" name="book-read-status" value="1" ;>
+                    <label for="book-reading">Reading</label><br>
+                    <input type="radio" id="book-not-read" name="book-read-status" value="2" ;>
+                    <label for="book--not-read">Not read</label><br>
+                    <br>
+                </div>
+                <input type="submit" value="Submit">
+
+            </form>
+
+
+        </main>
     </div>
     <script src="script.js"></script>
 </body>
