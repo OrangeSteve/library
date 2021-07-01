@@ -113,11 +113,11 @@
         <header>
             <h1>Library</h1>
         </header>
-        <button id="add-book-button">
+        <button type="button" id="add-book-button">
             Add Book
         </button>
         <main>
-            <form id="add-book-form" style="display:flex;flex-direction:column;align-items:center;background-color:skyblue;position: sticky; top:0;border:3px outset navy;padding: 20px;">
+            <div id="add-book-form" style="display:flex;flex-direction:column;align-items:center;background-color:skyblue;position: sticky; top:0;border:3px outset navy;padding: 20px;">
                 <div>
                     <h2 style="text-align: center;">Add book to library</h2>
                     <label for="book-title">Title:</label><br>
@@ -135,7 +135,7 @@
                     <br>
                 </div>
                 <div>
-                    <input type="radio" id="book-read" name="book-read-status" value="0">
+                    <input type="radio" id="book-read" name="book-read-status" value="0" checked="checked">
                     <label for="book-read">Read</label><br>
                     <input type="radio" id="book-reading" name="book-read-status" value="1">
                     <label for="book-reading">Reading</label><br>
@@ -143,9 +143,9 @@
                     <label for="book--not-read">Not read</label><br>
                     <br>
                 </div>
-                <input type="submit" value="Submit">
+                <button id="submit" type="button" value="Submit">
 
-            </form>
+            </div>
 
 
         </main>
