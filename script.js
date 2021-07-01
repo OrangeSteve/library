@@ -105,10 +105,23 @@ function showBooks() {
             if (myLibrary[i].read ==0) {
                 bookCards[i].read.textContent = "Read";
                 bookCards[i].card.classList.add(`read`);
+            }else if(myLibrary[i].read==1){
+                bookCards[i].read.textContent = "Reading";
+                bookCards[i].card.classList.add(`reading`);
+
             } else {
                 bookCards[i].read.textContent = "Not read";
                 bookCards[i].card.classList.add(`not-read`);
             }
+
+bookCards[i].read.addEventListener(`click`,()=>{
+    myLibrary[i].read++;
+    if (myLibrary[i].read>2){
+        myLibrary[i].read=0;
+    }
+    refreshBooks();
+})
+
             bookCards[i].removeBook.addEventListener(`click`,()=>{
                 myLibrary.splice(bookCards[i].index,1);
                 refreshBooks();
