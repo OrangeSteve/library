@@ -53,7 +53,6 @@
     .card-holder {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(125px, .5fr));
-        grid-auto-rows: repeat(auto-fill, minmax(175px, .7fr));
         gap: 10px;
         color: white;
         justify-content: space-between;
@@ -66,8 +65,18 @@
         border: 10px groove;
         border-radius: 10px;
         background-color: black;
+        text-align: center;
+        gap: 5px;
 
     }
+
+    .card-info{
+
+        width: 100%;
+        word-wrap: break-word;
+    }
+
+
 
     .not-read {
         border-color: red;
@@ -143,7 +152,7 @@
                     <label for="book--not-read">Not read</label><br>
                     <br>
                 </div>
-                <button id="submit" type="button" value="Submit">
+                <button id="submit" type="button">Add Book</button>
 
             </div>
 

@@ -32,7 +32,7 @@ addBookForm.remove();
 let myLibrary = JSON.parse(localStorage.getItem("mylibrary") || "[]");
 console.log(`Number of books: ${myLibrary.length}`);
 myLibrary.forEach(function (book, index) {
-    console.log("[" + index + "]:" + myLibrary[index].title+" by "+myLibrary[index].author);
+    console.log("[" + index + "]:" + myLibrary[index].title + " by " + myLibrary[index].author);
 });
 
 let bookCards = [];
@@ -111,19 +111,29 @@ function showBooks() {
                 document.createElement(`div`));
 
             bookCards[i].title.textContent = `${myLibrary[i].title}`;
+
             bookCards[i].author.textContent = `by ${myLibrary[i].author}`;
             bookCards[i].pages.textContent = `${myLibrary[i].pages} pages`;
+            bookCards[i].title.classList.add(`card-info`);
+            bookCards[i].author.classList.add(`card-info`);
+            bookCards[i].pages.classList.add(`card-info`);
             bookCards[i].removeBook.textContent = `Remove from library`;
+            bookCards[i].removeBook.style.setProperty("background-color", "red");
+            bookCards[i].removeBook.style.setProperty("border", "2px outset black");
             bookCards[i].card.classList.add(`book-card`);
             if (myLibrary[i].read == 0) {
                 bookCards[i].read.textContent = "Read";
+                bookCards[i].read.style.setProperty("background-color", "green");
                 bookCards[i].card.classList.add(`read`);
+
             } else if (myLibrary[i].read == 1) {
                 bookCards[i].read.textContent = "Reading";
+                bookCards[i].read.style.setProperty("background-color", "orange");
                 bookCards[i].card.classList.add(`reading`);
 
             } else {
                 bookCards[i].read.textContent = "Not read";
+                bookCards[i].read.style.setProperty("background-color", "red");
                 bookCards[i].card.classList.add(`not-read`);
             }
 
