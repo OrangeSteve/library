@@ -1,3 +1,9 @@
+let myLibrary = JSON.parse(localStorage.getItem("mylibrary") || "[]");
+console.log(`Number of books: ${myLibrary.length}`);
+myLibrary.forEach(function (book, index) {
+    console.log("[" + index + "]:" + myLibrary[index].title + " by " + myLibrary[index].author);
+});
+
 const mainContent = document.querySelector(`main`);
 const addBookForm = document.getElementById(`add-book-form`);
 const bookTitleInput = document.querySelector(`#book-title`);
@@ -9,36 +15,33 @@ const bookNotReadRadio = document.querySelector(`#book-not-read`);
 const readStatusRadios = document.getElementsByName(`book-read-status`);
 const bookCardHolder = document.createElement(`div`);
 const addBookMenuButton = document.querySelector(`#add-book-button`);
-const submitButton = document.querySelector(`#submit`);
 
-submitButton.addEventListener(`click`, () => {
+addBookForm.addEventListener(`submit`,()=>{
     let readStatus;
     for (let i = 0; i < readStatusRadios.length; i++) {
-        if (readStatusRadios[i].getAttribute("checked") == "checked") {
-            readStatus = readStatusRadios[i].getAttribute("value");
-            break;
-        }
-
-    }
-    const bookToAdd = new Book(bookTitleInput.value, bookAuthorInput.value, bookPagesInput.value, readStatus);
-    addBookToLibrary(bookToAdd);
-    closeAddBookMenu();
-
+       if (readStatusRadios[i].checked) {
+           readStatus = readStatusRadios[i].value;
+           break;
+       }
+   }
+   const bookToAdd = new Book(bookTitleInput.value, bookAuthorInput.value, bookPagesInput.value, readStatus);
+   addBookToLibrary(bookToAdd);
+   closeAddBookMenu();
 });
 
 addBookMenuButton.addEventListener(`click`, openAddBookMenu);
+
 addBookForm.remove();
-
-let myLibrary = JSON.parse(localStorage.getItem("mylibrary") || "[]");
-console.log(`Number of books: ${myLibrary.length}`);
-myLibrary.forEach(function (book, index) {
-    console.log("[" + index + "]:" + myLibrary[index].title + " by " + myLibrary[index].author);
-});
-
 let bookCards = [];
 bookCardHolder.classList.add(`card-holder`);
 mainContent.appendChild(bookCardHolder);
 refreshBooks();
+
+function refreshBooks() {
+    hideBooks();
+    saveLibrary();
+    showBooks();
+}
 
 function openAddBookMenu() {
     bookCardHolder.remove();
@@ -58,11 +61,7 @@ function closeAddBookMenu() {
 }
 
 
-function refreshBooks() {
-    hideBooks();
-    saveLibrary();
-    showBooks();
-}
+
 
 function Book(title, author, pages, read) {
     this.title = title;

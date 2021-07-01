@@ -70,7 +70,7 @@
 
     }
 
-    .card-info{
+    .card-info {
 
         width: 100%;
         word-wrap: break-word;
@@ -80,6 +80,10 @@
 
     .not-read {
         border-color: red;
+    }
+
+    .reading {
+        border-color: orange;
     }
 
     .read {
@@ -126,7 +130,8 @@
             Add Book
         </button>
         <main>
-            <div id="add-book-form" style="display:flex;flex-direction:column;align-items:center;background-color:skyblue;position: sticky; top:0;border:3px outset navy;padding: 20px;">
+            <form onsubmit="return false" id="add-book-form"
+                style="display:flex;flex-direction:column;align-items:center;background-color:skyblue;position: sticky; top:0;border:3px outset navy;padding: 20px;">
                 <div>
                     <h2 style="text-align: center;">Add book to library</h2>
                     <label for="book-title">Title:</label><br>
@@ -149,14 +154,11 @@
                     <input type="radio" id="book-reading" name="book-read-status" value="1">
                     <label for="book-reading">Reading</label><br>
                     <input type="radio" id="book-not-read" name="book-read-status" value="2">
-                    <label for="book--not-read">Not read</label><br>
+                    <label for="book-not-read">Not read</label><br>
                     <br>
                 </div>
-                <button id="submit" type="button">Add Book</button>
-
-            </div>
-
-
+                <input type="submit" value="Submit">
+            </form>
         </main>
     </div>
     <script src="script.js"></script>
