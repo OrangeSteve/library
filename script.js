@@ -16,17 +16,17 @@ const readStatusRadios = document.getElementsByName(`book-read-status`);
 const bookCardHolder = document.createElement(`div`);
 const addBookMenuButton = document.querySelector(`#add-book-button`);
 
-addBookForm.addEventListener(`submit`,()=>{
+addBookForm.addEventListener(`submit`, () => {
     let readStatus;
     for (let i = 0; i < readStatusRadios.length; i++) {
-       if (readStatusRadios[i].checked) {
-           readStatus = readStatusRadios[i].value;
-           break;
-       }
-   }
-   const bookToAdd = new Book(bookTitleInput.value, bookAuthorInput.value, bookPagesInput.value, readStatus);
-   addBookToLibrary(bookToAdd);
-   closeAddBookMenu();
+        if (readStatusRadios[i].checked) {
+            readStatus = readStatusRadios[i].value;
+            break;
+        }
+    }
+    const bookToAdd = new Book(bookTitleInput.value, bookAuthorInput.value, bookPagesInput.value, readStatus);
+    addBookToLibrary(bookToAdd);
+    closeAddBookMenu();
 });
 
 addBookMenuButton.addEventListener(`click`, openAddBookMenu);
