@@ -62,13 +62,15 @@ function closeAddBookMenu() {
 
 
 
+class Book{
 
-function Book(title, author, pages, read) {
+constructor(title, author, pages, read){
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.info = () => {
+}
+    info(){
         let readString;
         switch (read) {
             case 0: readString = "have read.";
@@ -80,9 +82,12 @@ function Book(title, author, pages, read) {
 
         return `${title} by ${author}, ${pages} pages,${readString}`;
     }
-}
 
-function BookCard(index, card, title, author, pages, read, removeBook) {
+    }
+
+class BookCard{
+
+constructor(index, card, title, author, pages, read, removeBook){
     this.index = index;
     this.card = card;
     this.title = title;
@@ -95,7 +100,15 @@ function BookCard(index, card, title, author, pages, read, removeBook) {
     this.card.appendChild(this.pages);
     this.card.appendChild(this.read);
     this.card.appendChild(this.removeBook);
+
 }
+
+}
+
+
+
+
+
 
 function showBooks() {
     if (myLibrary.length > 0)
